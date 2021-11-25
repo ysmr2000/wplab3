@@ -10,9 +10,10 @@ const router = express.Router();
 router.post('/api/register',clientController.registerControl);
 //route for login
 router.post('/api/login', clientController.loginControl);
-router.get('/api/clientDetails', clientController.getClient);
+
 
 //route for listing all products
+router.get("/api/clients", clientController.getClients)
 router.get('/api/catalog', productController.getCatalog);
 router.get('/api/article/:id', productController.getProductByID);
 

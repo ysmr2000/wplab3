@@ -24,7 +24,11 @@ const loginControl = (request, response) => {
             //add to session
             request.session.user = username;
             request.session.num_client = client[0].num_client;
-            request.session.admin = false;
+            if (username == "yasir") {
+                request.session.admin = true;
+              } else {
+                request.session.admin = false;
+              }
             response.render('postLogin', { username: username }); 
           }
         }
@@ -83,8 +87,7 @@ const registerControl = (request, response) => {
 const getClients = (request, response) => {
   const clientServices = require("../services/clientServices");
   clientServices.searchService(function (err, rows) {
-    response.json(rows);
-    response.end();
+    response.render('clients', { clients: rows });
   });
 };
 
